@@ -5,13 +5,13 @@ services:
     container_name: graphql-postgres-db
     image: postgres
     ports:
-      - 5432:5432
+      - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgressql/data
+      - postgres_data:/var/lib/postgresql/data   
     environment:
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: root4
-      POSTGRES_DB: graphql-db
-  
+      - POSTGRES_USER=graphql
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=graphql-db
+
 volumes:
   postgres_data:
