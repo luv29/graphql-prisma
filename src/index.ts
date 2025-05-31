@@ -1,3 +1,6 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import { expressMiddleware } from '@as-integrations/express5';
 import express from 'express';
 import { createApolloGraphqlServer } from './graphql';

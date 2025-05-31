@@ -2,8 +2,6 @@ import { prismaClient } from '../lib/db';
 import { createHmac, randomBytes } from 'crypto';
 import JWT from 'jsonwebtoken';
 
-const JWT_SECRET = "a5fasdf6asd6f5"
-
 export interface CreateUserPayload {
     firstName: string
     lastName?: string
@@ -56,12 +54,12 @@ class UserService {
             throw new Error("Incorrect Password")
         }
 
-        const token = JWT.sign({ id: user.id, email: user.email }, JWT_SECRET)
+        const token = JWT.sign({ id: user.id, email: user.email }, process.env.JWT_SECRET!)
         return token
     }
 
     public static decodeJWT(token: string) {
-        return JWT.verify(token, JWT_SECRET);
+        return JWT.verify(token, process.env.JWT_SECRET!);
     }
 
     public static getUserById(id: string) {

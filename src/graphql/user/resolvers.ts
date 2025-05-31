@@ -3,6 +3,10 @@ import UserService, {
     GetUserTokenPayload 
 } from "../../services/user";
 
+const user = {
+
+}
+
 const queries = {
     getUserToken: async (_: any, payload: GetUserTokenPayload) => {
         const token = await UserService.getUserToken(payload)
@@ -24,4 +28,4 @@ const mutations = {
     }
 }
 
-export const resolvers = { queries, mutations };
+export const resolvers = { queries, mutations, user };
