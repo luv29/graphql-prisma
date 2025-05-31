@@ -65,6 +65,10 @@ class UserService {
     public static getUserById(id: string) {
         return prismaClient.user.findUnique({where: { id }})
     }
+
+    public static getAllUsers() {
+        return prismaClient.user.findMany();
+    }
 }
 
 export default UserService
