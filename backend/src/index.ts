@@ -5,10 +5,16 @@ import { expressMiddleware } from '@as-integrations/express5';
 import express from 'express';
 import { createApolloGraphqlServer } from './graphql';
 import UserService from './services/user';
+import cors from 'cors';
 
 async function init() {
     const app = express()
     const port = Number(process.env.PORT) || 8000
+
+    app.use(cors({
+        origin: 'http://localhost:5173',
+        credentials: true
+    }));
 
     app.use(express.json())
 
